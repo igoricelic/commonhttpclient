@@ -94,7 +94,7 @@ public class HttpClientProxy implements InvocationHandler {
 
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 		MethodMetadata methodMetadata = metadata.get(method);
-		
+		if(methodMetadata == null) return 1;
 		String url = apiGatewayAddress + "/" + serviceName + methodMetadata.getPath();
 		System.out.println("URL: "+url);
 		
